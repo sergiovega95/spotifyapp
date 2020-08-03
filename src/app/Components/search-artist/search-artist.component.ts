@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {SpotifyApiService } from '../../Services/spotify-api.service'
 
 @Component({
   selector: 'app-search-artist',
@@ -7,9 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchArtistComponent implements OnInit {
 
-  constructor() { }
+  dataBusqueda:any[]=[];
+  parametrosbusqueda:string;
+
+  constructor(private  SpotifyApi : SpotifyApiService) { }
 
   ngOnInit(): void {
+  }
+
+  Busqueda(parametroBusqueda:string)
+  {  
+    if(parametroBusqueda)
+    {
+      this.SpotifyApi.BuscarArtista(parametroBusqueda).subscribe(
+        (response:any)=>
+        {
+          this.dataBusqueda=response;
+        });
+    }
+    else
+    {
+      this.dataBusqueda=[];
+    }
+    
   }
 
 }

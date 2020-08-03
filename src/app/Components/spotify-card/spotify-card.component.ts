@@ -8,10 +8,13 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SpotifyCardComponent implements OnInit {
 
   @Input() cardData :any
+  artistas:any []=[];
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
+    this.artistas=this.cardData.artists;
   }
 
 }

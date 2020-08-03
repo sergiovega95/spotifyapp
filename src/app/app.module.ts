@@ -12,6 +12,8 @@ import { HomeComponent } from './Components/home/home.component';
 import { SpotifyCardComponent } from './Components/spotify-card/spotify-card.component';
 import { ArtistComponent } from './Components/artist/artist.component';
 import { SearchArtistComponent } from './Components/search-artist/search-artist.component';
+import { AlbumsComponent } from './Components/albums/albums.component';
+import {MiliSeconsToMinutes} from '../app/pipes/timePipe';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { SearchArtistComponent } from './Components/search-artist/search-artist.
     SpotifyCardComponent,
     ArtistComponent,
     SearchArtistComponent,
+    AlbumsComponent,
+    MiliSeconsToMinutes
     
   ],
   imports: [

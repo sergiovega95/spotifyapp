@@ -9,19 +9,36 @@ export class SpotifyApiService {
             
   }
 
-  private headers :HttpHeaders ;
   private baseURL:string ='https://api.spotify.com/v1/'; 
-  private token:string="BQAoCAyNsaHei1eR3nrCLDm_BtbvmAE1WuhHHviPtqYuHaLN27toVT01W1zeD2LEX22U5K6E9YdbNBdKNZpiOKUWbzAYogzmkXU6ATXSKzESzTnYMJyDOiPqHLuprLuqGJpXzJx2FA4";
+  private token:string="BQBVnNjdommP4V5DuoWdQEFLpZQL-l4X3h6nFUm8PE6TfYKfrYQk_maMjSNpY8G4cJq5d-bWZBnNYaUGfKpUb_Xas6jHbVMk14RuB0ihZLY618cxe4dUOutaicYtyd2f0GsTviecpt4";
   
   ObtenerUltimosLanzamientos():Observable<any>
   {
-    let response =null;
-    
+        
     var peticion = this.httpClient
                   .get(this.baseURL+"browse/new-releases?country=CO&limit=20&offset=0",
                     {headers:new HttpHeaders({'Authorization':`Bearer ${this.token}`})});
     
     return peticion;
    
-  }  
+  } 
+  
+  ObtenerInformacionAlbumByid(idSpotify:string ):Observable<any>
+  {
+        
+    var peticion = this.httpClient
+                  .get(this.baseURL+`albums/${idSpotify}?&limit=10&market=CO`,
+                    {headers:new HttpHeaders({'Authorization':`Bearer ${this.token}`})});
+    
+    return peticion;
+   
+  } 
+  
+  BuscarArtista(nombreArtista:string)
+  {
+    var peticion = this.httpClient
+    .get(this.baseURL+`search?q=${nombreArtista}&type=track&market=CO&limit=10&offset=0`,
+      {headers:new HttpHeaders({'Authorization':`Bearer ${this.token}`})});
+    return peticion;
+  }
 }
